@@ -6,7 +6,8 @@ import {
   updateRegister,
   getDealers, 
   getSizesByBrand, 
-  getConsultants 
+  getConsultants,
+  getBrands
 } from '../services/api';
 
 const RegisterForm = ({ onSuccess, editData }) => {
@@ -14,7 +15,9 @@ const RegisterForm = ({ onSuccess, editData }) => {
   const [dealers, setDealers] = useState([]);
   const [sizes, setSizes] = useState([]);
   const [consultants, setConsultants] = useState([]);
+  const [brands, setBrands] = useState([]);
   const [notification, setNotification] = useState({ message: '', severity: 'success' });
+   const [loading, setLoading] = useState(true);
 
   const [formData, setFormData] = useState({
     claimNo: '',
@@ -38,6 +41,10 @@ const RegisterForm = ({ onSuccess, editData }) => {
         
         const consultantsRes = await getConsultants();
         setConsultants(consultantsRes.data);
+
+        const brandsRes = await getBrands();
+        setConsultants(brandsRes.data);
+
         
         if (editData) {
           setFormData(editData);

@@ -11,3 +11,4 @@ export const deleteRegister = (id) => api.delete(`/registers/${id}`);
 export const getDealers = () => api.get('/dealers');
 export const getSizesByBrand = (brand) => api.get(`/sizes?brand=${brand}`);
 export const getConsultants = () => api.get('/consultants');
+export const getBrands = () => api.get('/sizes/brands');
